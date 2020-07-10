@@ -1,13 +1,16 @@
 import React from 'react'
 import SideNav from './SideNavComponent';
+import Home from './HomeComponent';
+
 
 const Main = () => {
 
     return (
-      <div>
-          <SideNav />
-        
-      </div>
+      <>
+        <SideNav />
+        <Home />
+
+      </>
     );
   }
 

@@ -7,15 +7,18 @@ import MobillRight from '@material-ui/core/Drawer';
 
 const useStyles = makeStyles(theme => ({
     sidebarContainer: {
-        width: 250,
+        width: 350,
         background: colors.blueGrey[200],
         height: "100%"
     },
     avatar: {
         display: "block",
         margin: "0.5rem auto",
-        width: theme.spacing(13),
-        height: theme.spacing(13)
+        width: theme.spacing(20),
+        height: theme.spacing(20)
+    },
+    itemCenter: {
+        
     }
 
 }));
@@ -72,6 +75,7 @@ const SideNav = () => {
                     </ListItem>
                 ))}
             </List>
+            
         </Box>
     )
 

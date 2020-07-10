@@ -4,11 +4,11 @@ import { CssBaseline } from '@material-ui/core';
 
 function App() {
   return (
-    <>
+    <div >
       <CssBaseline />
       <Main />
 
-    </>
+    </div>
   );
 }
 
