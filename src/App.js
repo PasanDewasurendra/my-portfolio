@@ -1,16 +1,14 @@
 import React from 'react';
-import './App.css';
-import SideNavComponent from './components/SideNavComponent';
-import MainComponent from './components/MainComponent';
+import Main from './components/MainComponent';
+import { CssBaseline } from '@material-ui/core';
 
 function App() {
   return (
-    <div className="row" style={{height:930}}>
+    <>
+      <CssBaseline />
+      <Main />
 
-      <SideNavComponent />
-      <MainComponent />
-
-    </div>
+    </>
   );
 }
 

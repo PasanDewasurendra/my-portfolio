@@ -1,11 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
+import SideNav from './SideNavComponent';
 
-export default class MainComponent extends Component {
-    render() {
-        return (
-            <div className="col-md-9 col-lg-9 bg-light">
-                
-            </div>
-        )
-    }
-}
+const Main = () => {
+
+    return (
+      <div>
+          <SideNav />
+        
+      </div>
+    );
+  }
+
+  export default Main;

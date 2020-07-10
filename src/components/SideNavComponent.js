@@ -1,23 +1,95 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import profileImg from '../images/pkd.jpg';
+import { Box, AppBar, Toolbar, IconButton, Typography, Avatar, colors, Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import {Menu, Home, AssignmentInd, Apps, ContactMail, Info } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/core/styles';
+import MobillRight from '@material-ui/core/Drawer';
 
-export default class SideNavComponent extends Component {
-    render() {
-        return (
-            <div className="col-md-3 col-lg-3 bg-dark">
-
-                <img src={profileImg} className="mx-auto mt-5 d-block border rounded-circle border-primary shadow-sm" height="" width="45%" alt="Pasan Dewasurendra" />
-
-                <hr className="bg-primary w-75 mt-5 p-1" />
-
-                <nav class="nav flex-column p-5">
-                    <button class="btn btn-secondary rounded-pill btn-lg p-2 m-2 active">Home</button>
-                    <button class="btn btn-secondary rounded-pill btn-lg p-2 m-2" >About</button>
-                    <button class="btn btn-secondary rounded-pill btn-lg p-2 m-2" >Resume</button>
-                    <button class="btn btn-secondary rounded-pill btn-lg p-2 m-2" >Contact</button>
-                </nav>
-                                    
-            </div>
-        )
+const useStyles = makeStyles(theme => ({
+    sidebarContainer: {
+        width: 250,
+        background: colors.blueGrey[200],
+        height: "100%"
+    },
+    avatar: {
+        display: "block",
+        margin: "0.5rem auto",
+        width: theme.spacing(13),
+        height: theme.spacing(13)
     }
+
+}));
+
+const menuItems = [
+    {
+        listIcon: <Home />,
+        listText: 'Home',
+        listPath: '/'
+    },
+    {
+        listIcon: <Info />,
+        listText: 'About',
+        listPath: '/about'
+    },
+    {
+        listIcon: <AssignmentInd />,
+        listText: 'Resume',
+        listPath: '/resume'
+    },
+    {
+        listIcon: <Apps />,
+        listText: 'Project',
+        listPath: '/project'
+    },
+    {
+        listIcon: <ContactMail />,
+        listText: 'Contact',
+        listPath: '/contact'
+    }   
+]
+
+const SideNav = () => {
+    const classes = useStyles();
+
+    const [state, setState] = useState({
+        right: false
+    })
+    const menuToggler = (slider, open) => () => {
+        setState({
+            ...state, [slider]: open 
+        })
+    }
+
+    const sidebar = slider => (
+        <Box component='div' className={classes.sidebarContainer} >
+            <Avatar className={classes.avatar} src={profileImg} alt='Pasan Dewasurendra' />
+            <Divider />
+            <List>
+                {menuItems.map((item, key) => (
+                    <ListItem button key={key}>
+                        <ListItemIcon>{item.listIcon}</ListItemIcon>
+                        <ListItemText primary={item.listText} />
+                    </ListItem>
+                ))}
+            </List>
+        </Box>
+    )
+
+    return(
+        <Box component="nav" >
+            <AppBar position='static'>
+                <Toolbar>
+                    <IconButton onClick={menuToggler("right",true)}>
+                        <Menu style={{color: 'white' }} />
+                    </IconButton>
+                    <Typography variant='h5'>Who is Pasan Dewasurendra</Typography>
+                </Toolbar>
+                < MobillRight open={state.right} onClose={menuToggler("right", false)}>
+                    {sidebar('right')}
+                </MobillRight>
+            </AppBar>
+        </Box>
+    )
 }
+
+export default SideNav;
