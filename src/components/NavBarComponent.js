@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
           width: `calc(100% - 350px)`,
           marginLeft: 350
         },
-        backgroundColor: colors.lightBlue[800]
+        backgroundColor: colors.lightBlue[900]
     },
     menuButton: {
         marginRight: theme.spacing(2),

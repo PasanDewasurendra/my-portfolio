@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
         '&:hover': {
             backgroundColor: colors.lightBlue[800],
             color: '#a4acc4'
-        }
+        },
+        
      },
      listItemText:{
         fontSize:'1.5em'  
@@ -47,31 +48,36 @@ const menuItems = [
         listIcon: <Home fontSize='large' />,
         listText: 'Home',
         listPath: '/',
-        title: 'Welcome to My Profile'
+        title: 'Welcome to My Profile',
+        selected: true
     },
     {
         listIcon: <Info fontSize='large' />,
         listText: 'About',
         listPath: '/about',
-        title: 'Who is Pasan Dewasurendra'
+        title: 'Who is Pasan Dewasurendra',
+        selected: false
     },
     {
         listIcon: <AssignmentInd fontSize='large' />,
         listText: 'Resume',
         listPath: '/resume',
-        title: 'My Resume'
+        title: 'My Resume',
+        selected: false
     },
     {
         listIcon: <Apps fontSize='large' />,
         listText: 'Project',
         listPath: '/project',
-        title: 'What are my Projects'
+        title: 'What are my Projects',
+        selected: false
     },
     {
         listIcon: <FeedbackSharp fontSize='large' />,
         listText: 'Contact',
         listPath: '/contact',
-        title: 'Contact me on here or lets give a feedback'
+        title: 'Contact me on here or lets give a feedback',
+        selected: false
     }   
 ]
 
@@ -86,18 +92,23 @@ const MenuBar = (props) => {
         setMobileOpen(!mobileOpen);
     };
 
+    const itemSelected = (id) => {
+        menuItems[id].selected = true;
+        console.log( menuItems.filter(item => menuItems.indexOf(item) !== id))
+        menuItems.filter(item => menuItems.indexOf(item) !== id).map(item => item.selected = false)
+    }
+
     const { window } = props;
     const container = window !== undefined ? () => window().document.body : undefined;
-
-    console.log('menu toggler: '+ mobileOpen)
 
     return (
         <nav className={classes.drawer}>
             <Hidden mdUp implementation="css">
                 <Drawer container={container} style={{width: '350px'}} variant='temporary' anchor='left' open={mobileOpen} onClose={handleDrawerToggle} classes={{paper: classes.drawerPaper}} ModalProps={{keepMounted:true}} >
+                    <div className={classes.toolbar} />
                     <Avatar className={classes.avatar} src={profileImg} alt='Pasan Dewasurendra' />
                     <Divider style={{marginBottom: 20, marginTop: '3em',  backgroundColor:'#363b4d'}} />   
-                    <List>
+                    <List style={{marginLeft:5, marginRight:5}} >
                         {menuItems.map((item, key) => (
                             <ListItem className={classes.listItem} button key={key} component={Link} to={item.listPath} onClick={() => {handleDrawerToggle(); setTitle(item.title)} }>
                                 <ListItemIcon style={{color:'#a4acc4'}}> {item.listIcon} </ListItemIcon>
@@ -110,11 +121,12 @@ const MenuBar = (props) => {
 
             <Hidden smDown implementation="css">
                 <Drawer  style={{width: '350px'}} classes={{paper: classes.drawerPaper}} variant='permanent' open >
+                <div className={classes.toolbar} />
                     <Avatar className={classes.avatar} src={profileImg} alt='Pasan Dewasurendra' />
                     <Divider style={{marginBottom: 20, marginTop: '3em', backgroundColor:'#363b4d'}} />   
-                    <List>
+                    <List style={{marginLeft:5, marginRight:5}}>
                         {menuItems.map((item, key) => (
-                            <ListItem className={classes.listItem} button key={key} component={Link} to={item.listPath} onClick={() => setTitle(item.title)}>
+                            <ListItem className={classes.listItem} button key={key} component={Link} to={item.listPath} selected={item.selected} onClick={() => {setTitle(item.title); itemSelected(key) }}>
                                 <ListItemIcon style={{color:'#a4acc4'}}> {item.listIcon} </ListItemIcon>
                                 <ListItemText classes={{primary:classes.listItemText}} primary={item.listText} />
                             </ListItem>
