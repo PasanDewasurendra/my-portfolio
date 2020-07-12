@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     },
     drawer: {
         [theme.breakpoints.up('md')]: {
-          width: 350,
+          width: 300,
           flexShrink: 0,
         },
     },
@@ -22,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
     avatar: {
         display: "block",
         margin: "0.5rem auto",
-        width: theme.spacing(22),
-        height: theme.spacing(22),
+        width: theme.spacing(20),
+        height: theme.spacing(20),
         marginTop: theme.spacing(5),
-        border: '2px solid #a4acc4'
+        border: '2px solid #1084c7'
     },
     listItem: {
-        marginTop: theme.spacing(2),
+        marginTop: theme.spacing(1),
         color:'#a4acc4',
         paddingLeft: '25%',
         '&:hover': {
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         
      },
      listItemText:{
-        fontSize:'1.5em'  
+        fontSize:'1.2em'  
     }
 
 }))
@@ -104,8 +104,7 @@ const MenuBar = (props) => {
     return (
         <nav className={classes.drawer}>
             <Hidden mdUp implementation="css">
-                <Drawer container={container} style={{width: '350px'}} variant='temporary' anchor='left' open={mobileOpen} onClose={handleDrawerToggle} classes={{paper: classes.drawerPaper}} ModalProps={{keepMounted:true}} >
-                    <div className={classes.toolbar} />
+                <Drawer container={container} style={{width: '300px'}} variant='temporary' anchor='left' open={mobileOpen} onClose={handleDrawerToggle} classes={{paper: classes.drawerPaper}} ModalProps={{keepMounted:true}} >
                     <Avatar className={classes.avatar} src={profileImg} alt='Pasan Dewasurendra' />
                     <Divider style={{marginBottom: 20, marginTop: '3em',  backgroundColor:'#363b4d'}} />   
                     <List style={{marginLeft:5, marginRight:5}} >
@@ -120,8 +119,7 @@ const MenuBar = (props) => {
             </Hidden>
 
             <Hidden smDown implementation="css">
-                <Drawer  style={{width: '350px'}} classes={{paper: classes.drawerPaper}} variant='permanent' open >
-                <div className={classes.toolbar} />
+                <Drawer  style={{width: '300px'}} classes={{paper: classes.drawerPaper}} variant='permanent' open >
                     <Avatar className={classes.avatar} src={profileImg} alt='Pasan Dewasurendra' />
                     <Divider style={{marginBottom: 20, marginTop: '3em', backgroundColor:'#363b4d'}} />   
                     <List style={{marginLeft:5, marginRight:5}}>

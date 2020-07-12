@@ -6,8 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
     appBar: {
         [theme.breakpoints.up('md')]: {
-          width: `calc(100% - 350px)`,
-          marginLeft: 350
+          width: `calc(100% - 300px)`,
+          marginLeft: 300
         },
         backgroundColor: colors.lightBlue[900]
     },
@@ -38,7 +38,7 @@ const NavBar = (props) => {
                     <IconButton color='inherit' edge='start' className={classes.menuButton} onClick={handleDrawerToggle}>
                         <MenuIcon fontSize='large'/>
                     </IconButton>
-                    <Typography variant='h5'>{props.title}</Typography>
+                    <Typography variant="overline">{props.title}</Typography>
                 </Toolbar>
             </AppBar>
     )

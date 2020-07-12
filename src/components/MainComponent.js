@@ -31,6 +31,7 @@ const Main = () => {
         <MenuBar setTitle={setTitle} mobileOpen={mobileOpen} setMobileOpen={setMobileOpen}/>
         <main className={classes.content}>
           <Route exact path="/"  component={() => <Home />} />
+          <Route exact path="/my-portfolio"  component={() => <Home />} />
           <Route path="/about"   component={() => <About />} />
           <Route path="/resume"  component={() => <Resume />} />
           <Route path="/project" component={() => <Project />} />
