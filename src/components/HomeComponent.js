@@ -1,10 +1,10 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Typography, colors } from '@material-ui/core';
 import Typed from 'react-typed';
 import '../App.css';
 import Particales from 'react-particles-js';
-import cover from '../images/homeBackground.jpg'
+import cover from '../images/cover.jpg'
 
 
 const useStyles = makeStyles(theme => ({
@@ -15,6 +15,11 @@ const useStyles = makeStyles(theme => ({
         transform: 'translate(-50%, -50%)',
         textAlign: 'center',
         zIndex: 1
+    },
+    typedHeader:{
+        color: colors.common.white,
+        fontWeight:'light',
+        fontFamily: 'system-ui;',
     }
 
 }))
@@ -24,19 +29,18 @@ const Home = () => {
     const classes = useStyles();
     return (
         <div>
-
             <Box className={classes.typedContainer}>
-                <Typography variant='h4' >
-                    <Typed  strings={['Hi, I am Pasan Dewasurendra']} typeSpeed={40} />
+                <Typography variant='h2' >
+                    <Typed className={classes.typedHeader} strings={['Hi, I am Pasan Dewasurendra']} typeSpeed={40} />
                 </Typography>
                 <br />
-                <Typography variant='h5' >
+                <Typography variant='h4' >
                     <Typed startDelay={2000} strings={[' I am a full stack web developer.','I can provide clean code and  creative ideas.','I also make website more interactive with web animations.']}
                     typeSpeed={40} loop />
                 </Typography>  
             </Box>
 
-            <Particales style={{position:'fixed', background:'url('+cover+') no-repeat center fixed' }}
+            <Particales style={{position:'fixed', background:'url('+cover+') no-repeat center fixed', marginTop:-40, marginLeft: -25}}
                 params={{
                 particles: {
                     number:{

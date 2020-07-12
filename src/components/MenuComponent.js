@@ -4,15 +4,15 @@ import { Drawer, List, ListItem, ListItemIcon, ListItemText, Avatar, Divider, co
 import {Home, AssignmentInd, Apps, FeedbackSharp, Info } from '@material-ui/icons';
 import profileImg from '../images/pkd.jpg';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
     drawerPaper: {
         width: 'inherit',
-        backgroundColor: colors.grey[100]
+        backgroundColor: '#191d2b',
+        borderRight:'1px solid #363b4d'
     },
     drawer: {
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
           width: 350,
           flexShrink: 0,
         },
@@ -25,14 +25,15 @@ const useStyles = makeStyles((theme) => ({
         width: theme.spacing(22),
         height: theme.spacing(22),
         marginTop: theme.spacing(5),
-        border: '1px solid #42a5f2'
+        border: '2px solid #a4acc4'
     },
     listItem: {
         marginTop: theme.spacing(2),
+        color:'#a4acc4',
         paddingLeft: '25%',
         '&:hover': {
-            backgroundColor: colors.blue[400],
-            color: colors.common.white
+            backgroundColor: colors.lightBlue[800],
+            color: '#a4acc4'
         }
      },
      listItemText:{
@@ -45,27 +46,32 @@ const menuItems = [
     {
         listIcon: <Home fontSize='large' />,
         listText: 'Home',
-        listPath: '/'
+        listPath: '/',
+        title: 'Welcome to My Profile'
     },
     {
         listIcon: <Info fontSize='large' />,
         listText: 'About',
-        listPath: '/about'
+        listPath: '/about',
+        title: 'Who is Pasan Dewasurendra'
     },
     {
         listIcon: <AssignmentInd fontSize='large' />,
         listText: 'Resume',
-        listPath: '/resume'
+        listPath: '/resume',
+        title: 'My Resume'
     },
     {
         listIcon: <Apps fontSize='large' />,
         listText: 'Project',
-        listPath: '/project'
+        listPath: '/project',
+        title: 'What are my Projects'
     },
     {
         listIcon: <FeedbackSharp fontSize='large' />,
         listText: 'Contact',
-        listPath: '/contact'
+        listPath: '/contact',
+        title: 'Contact me on here or lets give a feedback'
     }   
 ]
 
@@ -73,6 +79,8 @@ const MenuBar = (props) => {
     const classes = useStyles();
 
     const {mobileOpen, setMobileOpen} = props;
+    const {setTitle} = props;
+    console.log('setitile : '+setTitle)
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -85,29 +93,29 @@ const MenuBar = (props) => {
 
     return (
         <nav className={classes.drawer}>
-            <Hidden smUp implementation="css">
+            <Hidden mdUp implementation="css">
                 <Drawer container={container} style={{width: '350px'}} variant='temporary' anchor='left' open={mobileOpen} onClose={handleDrawerToggle} classes={{paper: classes.drawerPaper}} ModalProps={{keepMounted:true}} >
                     <Avatar className={classes.avatar} src={profileImg} alt='Pasan Dewasurendra' />
-                    <Divider style={{marginBottom: 20, marginTop: '3em'}} />   
+                    <Divider style={{marginBottom: 20, marginTop: '3em',  backgroundColor:'#363b4d'}} />   
                     <List>
                         {menuItems.map((item, key) => (
-                            <ListItem className={classes.listItem} button key={key} component={Link} to={item.listPath}>
-                                <ListItemIcon> {item.listIcon} </ListItemIcon>
+                            <ListItem className={classes.listItem} button key={key} component={Link} to={item.listPath} onClick={() => {handleDrawerToggle(); setTitle(item.title)} }>
+                                <ListItemIcon style={{color:'#a4acc4'}}> {item.listIcon} </ListItemIcon>
                                 <ListItemText classes={{primary:classes.listItemText}} primary={item.listText} />
                             </ListItem>
                         ))}
                     </List>
                 </Drawer>
             </Hidden>
-            
-            <Hidden xsDown implementation="css">
+
+            <Hidden smDown implementation="css">
                 <Drawer  style={{width: '350px'}} classes={{paper: classes.drawerPaper}} variant='permanent' open >
                     <Avatar className={classes.avatar} src={profileImg} alt='Pasan Dewasurendra' />
-                    <Divider style={{marginBottom: 20, marginTop: '3em'}} />   
+                    <Divider style={{marginBottom: 20, marginTop: '3em', backgroundColor:'#363b4d'}} />   
                     <List>
                         {menuItems.map((item, key) => (
-                            <ListItem className={classes.listItem} button key={key} component={Link} to={item.listPath}>
-                                <ListItemIcon> {item.listIcon} </ListItemIcon>
+                            <ListItem className={classes.listItem} button key={key} component={Link} to={item.listPath} onClick={() => setTitle(item.title)}>
+                                <ListItemIcon style={{color:'#a4acc4'}}> {item.listIcon} </ListItemIcon>
                                 <ListItemText classes={{primary:classes.listItemText}} primary={item.listText} />
                             </ListItem>
                         ))}
@@ -116,10 +124,6 @@ const MenuBar = (props) => {
             </Hidden> 
         </nav>
     )
-}
-
-MenuBar.prototype = {
-    window: PropTypes.func
 }
 
 export default MenuBar;

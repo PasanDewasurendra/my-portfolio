@@ -21,17 +21,20 @@ const Main = () => {
     const classes = useStyles();
 
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [title, setTitle] = React.useState('Pasan Dewasurendra');
+
+    console.log('main setTitle: '+title)
 
     return (
       <div style={{display:'flex'}}>
-        <NavBar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen}/>
-        <MenuBar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen}/>
+        <NavBar title={title} mobileOpen={mobileOpen} setMobileOpen={setMobileOpen}/>
+        <MenuBar setTitle={setTitle} mobileOpen={mobileOpen} setMobileOpen={setMobileOpen}/>
         <main className={classes.content}>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/resume" component={Resume} />
-          <Route path="/project" component={Project} />
-          <Route path="/contact" component={Contact} />
+          <Route exact path="/"  component={() => <Home />} />
+          <Route path="/about"   component={() => <About />} />
+          <Route path="/resume"  component={() => <Resume />} />
+          <Route path="/project" component={() => <Project />} />
+          <Route path="/contact" component={() => <Contact />} />
         </main>
       </div>
     );

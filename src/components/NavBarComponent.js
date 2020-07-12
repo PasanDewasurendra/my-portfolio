@@ -5,15 +5,16 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
     appBar: {
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
           width: `calc(100% - 350px)`,
           marginLeft: 350
         },
-        backgroundColor: colors.grey[700]
+        backgroundColor: colors.lightBlue[800]
     },
     menuButton: {
         marginRight: theme.spacing(2),
-        [theme.breakpoints.up('sm')]: {
+        marginLeft:theme.spacing(1),
+        [theme.breakpoints.up('md')]: {
           display: 'none',
         },
     }
@@ -37,7 +38,7 @@ const NavBar = (props) => {
                     <IconButton color='inherit' edge='start' className={classes.menuButton} onClick={handleDrawerToggle}>
                         <MenuIcon fontSize='large'/>
                     </IconButton>
-                    <Typography variant='h5'>Who is Pasan Dewasurendra</Typography>
+                    <Typography variant='h5'>{props.title}</Typography>
                 </Toolbar>
             </AppBar>
     )
