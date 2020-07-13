@@ -4,7 +4,17 @@ import { Box, Typography, colors } from '@material-ui/core';
 import Typed from 'react-typed';
 import '../App.css';
 import Particales from 'react-particles-js';
-import nodeImg from '../images/pkd.png';
+import nodeJava from '../images/java.png';
+import nodePython from '../images/python.png';
+import nodeReact from '../images/react.png';
+import nodeNodejs from '../images/nodejs.png';
+import nodeAngular from '../images/angular.svg';
+import nodeBootstrap from '../images/bootstrap.png';
+import nodehtml from '../images/html.png';
+import nodecss from '../images/css.png';
+import nodeMaterialui from '../images/material-ui.png';
+
+
 
 const useStyles = makeStyles(theme => ({
     typedContainer: {
@@ -65,17 +75,59 @@ const Home = () => {
                             value: '#a4acc4'
                         },
                         shape: {
-                            type:"circle",
+                            type:"image",
                             stroke:
                             {
                                 width: 1,
                                 color: '#fff'
                             },
-                            image:{
-                                src: nodeImg,
-                                width:100,
-                                height:100
-                            }
+                            image:[
+                                {
+                                    src: nodeJava,
+                                    width:100,
+                                    height:100
+                                },
+                                {
+                                    src: nodePython,
+                                    width:100,
+                                    height:100
+                                },
+                                {
+                                    src: nodeReact,
+                                    width:100,
+                                    height:100
+                                },
+                                {
+                                    src: nodeNodejs,
+                                    width:100,
+                                    height:100
+                                },
+                                {
+                                    src: nodeAngular,
+                                    width:80,
+                                    height:80
+                                },
+                                {
+                                    src: nodeNodejs,
+                                    width:100,
+                                    height:100
+                                },
+                                {
+                                    src: nodeMaterialui,
+                                    width:100,
+                                    height:100
+                                },
+                                {
+                                    src: nodehtml,
+                                    width:100,
+                                    height:100
+                                },
+                                {
+                                    src: nodeBootstrap,
+                                    width:100,
+                                    height:100
+                                },
+                            ]
                         },
                         size:{
                             value: 8,

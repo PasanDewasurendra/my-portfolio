@@ -55,7 +55,7 @@ const menuItems = [
         listIcon: <Info fontSize='large' />,
         listText: 'About',
         listPath: '/about',
-        title: 'Who is Pasan Dewasurendra',
+        title: 'Little About Me',
         selected: false
     },
     {
